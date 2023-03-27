@@ -277,6 +277,173 @@ CREATE TABLE "public"."dev_gen_tables" (
 -- Records of dev_gen_tables
 -- ----------------------------
 
+DROP TABLE IF EXIST public.flow_work_classify;
+
+CREATE TABLE public.flow_work_classify (
+    id bigserial NOT NULL,
+    create_time timestamptz NULL,
+    update_time timestamptz NULL,
+    delete_time timestamptz NULL,
+    "name" varchar(128) NULL,
+    creator int8 NULL,
+    CONSTRAINT flow_work_classify_pkey PRIMARY KEY (id)
+);
+
+
+-- public.flow_work_info definition
+
+-- Drop table
+
+DROP TABLE IF EXIST public.flow_work_info;
+
+CREATE TABLE public.flow_work_info (
+   id bigserial NOT NULL,
+   create_time timestamptz NULL,
+   update_time timestamptz NULL,
+   delete_time timestamptz NULL,
+   "name" varchar(128) NULL,
+   icon varchar(128) NULL,
+   "structure" json NULL,
+   classify int8 NULL,
+   templates json NULL,
+   task json NULL,
+   submit_count int8 NULL DEFAULT 0,
+   creator int8 NULL,
+   "notice" json NULL,
+   remarks varchar(1024) NULL,
+   CONSTRAINT flow_work_info_pkey PRIMARY KEY (id)
+);
+
+
+-- public.flow_work_order definition
+
+-- Drop table
+
+DROP TABLE IF EXIST public.flow_work_order;
+
+CREATE TABLE public.flow_work_order (
+   id bigserial NOT NULL,
+   create_time timestamptz NULL,
+   update_time timestamptz NULL,
+   delete_time timestamptz NULL,
+   title varchar(128) NULL,
+   priority int8 NULL,
+   process int8 NULL,
+   classify int8 NULL,
+   is_end int8 NULL DEFAULT 0,
+   is_denied int8 NULL DEFAULT 0,
+   state json NULL,
+   related_person json NULL,
+   creator int8 NULL,
+   urge_count int8 NULL DEFAULT 0,
+   urge_last_time int8 NULL DEFAULT 0,
+   CONSTRAINT flow_work_order_pkey PRIMARY KEY (id)
+);
+
+
+-- public.flow_work_order_templates definition
+
+-- Drop table
+
+DROP TABLE IF EXIST public.flow_work_order_templates;
+
+CREATE TABLE public.flow_work_order_templates (
+   id bigserial NOT NULL,
+   create_time timestamptz NULL,
+   update_time timestamptz NULL,
+   delete_time timestamptz NULL,
+   work_order int8 NULL,
+   form_structure json NULL,
+   form_data json NULL,
+   CONSTRAINT flow_work_order_templates_pkey PRIMARY KEY (id)
+);
+
+
+-- public.flow_work_stage definition
+
+-- Drop table
+
+DROP TABLE IF EXIST public.flow_work_stage;
+
+CREATE TABLE public.flow_work_stage (
+   id bigserial NOT NULL,
+   create_time timestamptz NULL,
+   update_time timestamptz NULL,
+   delete_time timestamptz NULL,
+   title varchar(128) NULL,
+   work_order int8 NULL,
+   state varchar(128) NULL,
+   "source" varchar(128) NULL,
+   target varchar(128) NULL,
+   stage varchar(128) NULL,
+   status int8 NULL,
+   processor varchar(45) NULL,
+   processor_id int8 NULL,
+   cost_duration int8 NULL,
+   remarks text NULL,
+   CONSTRAINT flow_work_stage_pkey PRIMARY KEY (id)
+);
+
+
+-- public.flow_work_task definition
+
+-- Drop table
+
+DROP TABLE IF EXIST public.flow_work_task;
+
+CREATE TABLE public.flow_work_task (
+    id bigserial NOT NULL,
+    create_time timestamptz NULL,
+    update_time timestamptz NULL,
+    delete_time timestamptz NULL,
+    "name" varchar(256) NULL,
+    task_type varchar(45) NULL,
+    "content" text NULL,
+    creator int8 NULL,
+    remarks text NULL,
+    CONSTRAINT flow_work_task_pkey PRIMARY KEY (id)
+);
+
+
+-- public.flow_work_task_history definition
+
+-- Drop table
+
+DROP TABLE IF EXIST public.flow_work_task_history;
+
+CREATE TABLE public.flow_work_task_history (
+   id bigserial NOT NULL,
+   create_time timestamptz NULL,
+   update_time timestamptz NULL,
+   delete_time timestamptz NULL,
+   task int8 NULL,
+   "name" text NULL,
+   task_type int8 NULL,
+   execution_time varchar(128) NULL,
+   "result" text NULL,
+   CONSTRAINT flow_work_task_history_pkey PRIMARY KEY (id)
+);
+
+
+-- public.flow_work_templates definition
+
+-- Drop table
+
+DROP TABLE IF EXIST public.flow_work_templates;
+
+CREATE TABLE public.flow_work_templates (
+   id bigserial NOT NULL,
+   create_time timestamptz NULL,
+   update_time timestamptz NULL,
+   delete_time timestamptz NULL,
+   "name" varchar(128) NULL,
+   form_structure json NULL,
+   creator int8 NULL,
+   remarks text NULL,
+   CONSTRAINT flow_work_templates_pkey PRIMARY KEY (id)
+);
+
+
 
 -- ----------------------------
 -- Table structure for log_jobs
