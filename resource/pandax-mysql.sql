@@ -676,9 +676,9 @@ CREATE TABLE `sys_depts`  (
 -- ----------------------------
 -- Records of sys_depts
 -- ----------------------------
-INSERT INTO `sys_depts` VALUES (2, NULL, 0, '/0/2', '熊猫科技', 0, 'xm', '18353366836', '342@qq.com', '0', 'admin', 'admin', '2021-12-01 17:31:53', '2021-12-02 08:56:19', NULL);
-INSERT INTO `sys_depts` VALUES (3, NULL, 2, '/0/2/3', '研发部', 1, 'panda', '18353366543', 'ewr@qq.com', '0', 'admin', 'admin', '2021-12-01 17:37:43', '2021-12-02 08:55:56', NULL);
-INSERT INTO `sys_depts` VALUES (7, NULL, 2, '/0/2/7', '营销部', 2, 'panda', '18353333333', '342@qq.com', '0', 'panda', 'panda', '2021-12-24 10:46:24', '2021-12-24 10:47:15', NULL);
+INSERT INTO `sys_depts` VALUES (2, 1, 0, '/0/2', '熊猫科技', 0, 'xm', '18353366836', '342@qq.com', '0', 'admin', 'admin', '2021-12-01 17:31:53', '2021-12-02 08:56:19', NULL);
+INSERT INTO `sys_depts` VALUES (3, 1, 2, '/0/2/3', '研发部', 1, 'panda', '18353366543', 'ewr@qq.com', '0', 'admin', 'admin', '2021-12-01 17:37:43', '2021-12-02 08:55:56', NULL);
+INSERT INTO `sys_depts` VALUES (7, 1, 2, '/0/2/7', '营销部', 2, 'panda', '18353333333', '342@qq.com', '0', 'panda', 'panda', '2021-12-24 10:46:24', '2021-12-24 10:47:15', NULL);
 
 -- ----------------------------
 -- Table structure for sys_dict_data
@@ -986,10 +986,7 @@ CREATE TABLE `sys_posts`  (
 -- Records of sys_posts
 -- ----------------------------
 INSERT INTO `sys_posts` VALUES (1, 1, '首席执行官', 'CEO', 1, '0', '首席执行官', 'panda', '', '2021-12-02 09:21:44', '2022-07-16 17:36:32', NULL);
-INSERT INTO `sys_posts` VALUES (3, 1, '首席技术执行官', 'CTO', 1, '0', '', 'admin', '', '2021-12-02 09:21:44', '2021-12-02 09:25:59', '2021-12-02 09:27:41');
 INSERT INTO `sys_posts` VALUES (4, 1, '首席技术执行官', 'CTO', 2, '0', '', 'panda', '', '2021-12-02 09:21:44', '2022-07-16 17:37:42', NULL);
-INSERT INTO `sys_posts` VALUES (5, 1, '123', '123', 0, '0', '', 'admin', '', '2021-12-18 00:33:28', '2021-12-18 00:33:28', '2021-12-28 14:11:52');
-INSERT INTO `sys_posts` VALUES (6, 1, 'wr', 'rw', 0, '0', '', 'panda', '', '2022-07-16 16:55:57', '2022-07-16 16:55:57', '2022-07-16 16:56:08');
 
 -- ----------------------------
 -- Table structure for sys_role_depts

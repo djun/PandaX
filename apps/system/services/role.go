@@ -57,6 +57,9 @@ func (m *sysRoleModel) FindListPage(page, pageSize int, data entity.SysRole) (*[
 	if data.RoleId != 0 {
 		db = db.Where("role_id = ?", data.RoleId)
 	}
+	if data.TenantId != 0 {
+		db = db.Where("tenant_id = ?", data.TenantId)
+	}
 	if data.RoleName != "" {
 		db = db.Where("role_name like ?", "%"+data.RoleName+"%")
 	}
@@ -79,6 +82,9 @@ func (m *sysRoleModel) FindList(data entity.SysRole) *[]entity.SysRole {
 	// 此处填写 where参数判断
 	if data.RoleName != "" {
 		db = db.Where("role_name like ?", "%"+data.RoleName+"%")
+	}
+	if data.TenantId != 0 {
+		db = db.Where("tenant_id = ?", data.TenantId)
 	}
 	if data.Status != "" {
 		db = db.Where("status = ?", data.Status)

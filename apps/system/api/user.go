@@ -238,23 +238,22 @@ func (u *UserApi) GetSysUser(rc *restfulx.ReqCtx) {
 	result := u.UserApp.FindOne(user)
 
 	var role entity.SysRole
+	var post entity.SysPost
+	var dept entity.SysDept
+
 	if !IsTenantAdmin(rc.LoginAccount.TenantId) {
 		role.TenantId = rc.LoginAccount.TenantId
-	}
-	roles := u.RoleApp.FindList(role)
-
-	var post entity.SysPost
-	if !IsTenantAdmin(rc.LoginAccount.TenantId) {
 		post.TenantId = rc.LoginAccount.TenantId
+		dept.TenantId = rc.LoginAccount.TenantId
 	}
-	posts := u.PostApp.FindList(post)
 
 	rc.ResData = vo.UserVo{
 		Data:    result,
 		PostIds: result.PostIds,
 		RoleIds: result.RoleIds,
-		Roles:   *roles,
-		Posts:   *posts,
+		Roles:   *u.RoleApp.FindList(role),
+		Posts:   *u.PostApp.FindList(post),
+		Depts:   u.DeptApp.SelectDept(dept),
 	}
 }
 
