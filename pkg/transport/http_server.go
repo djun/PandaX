@@ -37,9 +37,7 @@ func (s *HttpServer) Type() Type {
 func (s *HttpServer) Start(ctx context.Context) error {
 	global.Log.Infof("HTTP Server listen: %s", s.Addr)
 	go func() {
-		if err := s.srv.ListenAndServe(); err != nil {
-			global.Log.Errorf("error http serve: %s", err)
-		}
+		s.srv.ListenAndServe()
 	}()
 	return nil
 }
