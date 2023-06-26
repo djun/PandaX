@@ -772,7 +772,7 @@ INSERT INTO "public"."sys_jobs" VALUES (1, 'testcron', 'SYSTEM', '2', ' 0/10 * *
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."sys_menus";
 CREATE SEQUENCE IF NOT EXISTS "sys_menus_menu_id_seq";
-CREATE TABLE "public"."public"."sys_menus" (
+CREATE TABLE "public"."sys_menus" (
   "menu_id" int8 NOT NULL DEFAULT nextval('sys_menus_menu_id_seq'::regclass),
   "menu_name" varchar(128) COLLATE "pg_catalog"."default",
   "title" varchar(64) COLLATE "pg_catalog"."default",
@@ -1202,6 +1202,7 @@ INSERT INTO "public"."sys_roles" VALUES (2, '管理员',1, '0', 'manage', 2, '',
 -- Table structure for sys_tenants
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."sys_tenants";
+CREATE SEQUENCE IF NOT EXISTS "sys_tenants_id_seq";
 CREATE TABLE "public"."sys_tenants" (
   "id" int8 NOT NULL DEFAULT nextval('sys_tenants_id_seq'::regclass),
   "create_time" timestamptz(6),
